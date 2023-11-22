@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+<head>
+    <title>Petrointelligence Data</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_SharedWithUsers msdt:dt="string">Daniel Vazquez</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_SharedWithUsers>
+<mso:SharedWithUsers msdt:dt="string">47;#Daniel Vazquez</mso:SharedWithUsers>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+<body>
+    <h1>Petrointelligence Data</h1>
+    <div id="data-container"></div>
+    <script>
+        // Define the states and fuel types
+        const states = ['AGS', 'BC', 'BCS', 'CAMP', 'CHIS', 'CHIH', 'CDMX', 'COAH', 'COL', 'DGO', 'MEX', 'GTO', 'GRO', 'HGO', 'JAL', 'MICH', 'MOR', 'NAY', 'NL', 'OAX', 'PUE', 'QRO', 'QROO', 'SLP', 'SIN', 'SON', 'TAB', 'TAMPS', 'TLAX', 'VER', 'YUC', 'ZAC'];
+        const fuelTypes = ['REG', 'PRE', 'DIE'];
+
+        // Get the container to append the iframes
+        const container = document.getElementById("data-container");
+
+        // Iterate over each state and fuel type to generate the iframes
+        for (const state of states) {
+            for (const fuel of fuelTypes) {
+                const iframe = document.createElement("iframe");
+                iframe.src = `https://petrointelligence.com/api/api_precios.html?consulta=estado&estado=${state}&tipo=${fuel}`;
+                iframe.width = "400";
+                iframe.height = "300";
+                iframe.frameBorder = "0";
+                
+                // Append the iframe to the container
+                container.appendChild(iframe);
+            }
+        }
+    </script>
+</body>
+</html>
